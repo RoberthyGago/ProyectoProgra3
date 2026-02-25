@@ -48,4 +48,7 @@ Public Class DbHealper
         Return ExecuteNonQuery(query, parameters, errorMessage)
     End Function
 
+    Friend Function ExecuteReader(query As String, parameters As Dictionary(Of String, Object), errorMessage As String) As SqlDataReader
+        Throw New NotImplementedException()
+    End Function
 End Class

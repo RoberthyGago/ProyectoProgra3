@@ -57,7 +57,7 @@
 
     <div class="form-group">
         <asp:Label ID="LblCorreo" runat="server" Text="Correo" CssClass="control-label"></asp:Label>
-        <asp:TextBox ID="TxtCorreo" runat="server" CssClass="form-control" TextMode="Email"></asp:TextBox>
+        <asp:TextBox ID="TxtCorreo" runat="server"  placeholder="correo@abc.com" CssClass="form-control" TextMode="Email"></asp:TextBox>
     </div>
     <asp:RequiredFieldValidator ID="rfvCorreo" runat="server"
         ErrorMessage="Es necesario indicar el correo"

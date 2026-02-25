@@ -3,12 +3,14 @@
 'metodos get y set para cada propiedad para modificar y acceder a los valores de las propiedades
 Namespace Models
     Public Class Colaborador
+
         Private _nombre As String
         Private _apellidos As String
         Private _tipoDocumento As String
         Private _identificacion As String
         Private _fechaNacimiento As Date
         Private _correo As String
+        Private _ID_TRABAJADOR As Integer
 
         Public Sub New()
             Me.Nombre = "sin nombre"
@@ -27,6 +29,9 @@ Namespace Models
             Me.FechaNacimiento = fechaNacimiento
             Me.Correo = correo
         End Sub
+
+
+
 
         Public Property Nombre As String
             Get
