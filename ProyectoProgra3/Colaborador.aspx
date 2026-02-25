@@ -68,18 +68,24 @@
     <asp:Label ID="lblResultado" runat="server" Text="" CssClass="control-label"></asp:Label>
 
     <%--creo eventos nuevos gridview--%>
-    <asp:GridView ID="gvColaborador"  runat="server" AutoGenerateColumns="False" DataKeyNames="ID_TRABAJADOR" DataSourceID="ProyectoProgra3">
+    <asp:GridView ID="gvColaborador" CssClass="table table-striped table-hover"  
+        runat="server" AutoGenerateColumns="False" DataKeyNames="ID_TRABAJADOR" DataSourceID="ProyectoProgra3">
         <Columns>
             <asp:BoundField DataField="ID_TRABAJADOR" HeaderText="ID_TRABAJADOR" InsertVisible="False" ReadOnly="True" SortExpression="ID_TRABAJADOR" />
             <asp:BoundField DataField="NOMBRE" HeaderText="NOMBRE" SortExpression="NOMBRE" />
             <asp:BoundField DataField="APELLIDOS" HeaderText="APELLIDOS" SortExpression="APELLIDOS" />
             <asp:BoundField DataField="IDENTIFICACION" HeaderText="IDENTIFICACION" SortExpression="IDENTIFICACION" />
             <asp:BoundField DataField="FECHA_NACIMIENTO" HeaderText="FECHA_NACIMIENTO" SortExpression="FECHA_NACIMIENTO" />
-        </Columns>
+            <asp:CommandField ShowDeleteButton="true" ControlStyle-CssClass="btn btn-danger"  DeleteText="<i class='bi bi-trash'>"/> 
+            </Columns>
 </asp:GridView>
         
 
-<asp:SqlDataSource ID="ProyectoProgra3" runat="server" ConnectionString="<%$ ConnectionStrings:ProyectoProgra3ConnectionString2 %>" ProviderName="<%$ ConnectionStrings:ProyectoProgra3ConnectionString2.ProviderName %>" SelectCommand="SELECT * FROM [COLABORADOR]"></asp:SqlDataSource>
-        
+<asp:SqlDataSource ID="ProyectoProgra3" runat="server" 
+        ConnectionString="<%$ ConnectionStrings:ROBERTHCAConnectionString %>" 
+        ProviderName="System.Data.SqlClient" 
+        SelectCommand="SELECT * FROM [COLABORADOR]">
+    </asp:SqlDataSource>
+
 
 </asp:Content>

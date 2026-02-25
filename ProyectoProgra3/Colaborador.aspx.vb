@@ -1,8 +1,10 @@
-﻿Imports ProyectoProgra3.Models
+﻿
+Imports ProyectoProgra3.Models
+Imports ProyectoProgra3.Utils
 
 Public Class Colaborador
     Inherits System.Web.UI.Page
-
+    Private db As New ColaboradorDB()
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
 
     End Sub
@@ -18,11 +20,23 @@ Public Class Colaborador
 
         colaborador.Nombre = TxtNombre.Text.Trim()
         colaborador.Apellidos = TxtApellidos.Text.Trim()
-        colaborador.FechaNacimiento = CDate(TxtFechaNacimiento.Text)
+        colaborador.FechaNacimiento = Convert.ToDateTime(TxtFechaNacimiento.Text.Trim())
         colaborador.Correo = TxtCorreo.Text.Trim()
         colaborador.TipoDocumento = DdlTipoDocumento.SelectedItem.Value
         colaborador.Identificacion = TxtIdentificacion.Text.Trim()
 
+        Dim errorMessage As String = ""
         lblResultado.Text = colaborador.Resumen()
+        Dim resultado = db.CrearColaborador(colaborador, errorMessage)
+
+
+        If resultado Then
+            gvColaborador.DataBind()
+            SwalUtils.ShowSwal(Me, "Colaborador creado exitosamente")
+        Else
+            'SwalUtils.ShowSwalError(Me, "Error al crear el Colaborador")
+            SwalUtils.ShowSwalError(Me, errorMessage)
+        End If
+
     End Sub
 End Class
