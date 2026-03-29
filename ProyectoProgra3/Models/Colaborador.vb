@@ -42,6 +42,15 @@ Namespace Models
             End Set
         End Property
 
+        Public Property ID_TRABAJADOR As Integer
+            Get
+                Return _ID_TRABAJADOR
+            End Get
+            Set(value As Integer)
+                _ID_TRABAJADOR = value
+            End Set
+        End Property
+
         Public Property Apellidos As String
             Get
                 Return _apellidos

@@ -51,4 +51,39 @@ Public Class DbHealper
     Friend Function ExecuteReader(query As String, parameters As Dictionary(Of String, Object), errorMessage As String) As SqlDataReader
         Throw New NotImplementedException()
     End Function
+
+    Friend Function ExecuteQuery(query As String,
+           parameters As Dictionary(Of String, Object),
+           errorMessage As String) As DataTable
+
+        'Validar que la consulta no esté vacía
+        If String.IsNullOrWhiteSpace(query) Then
+            Throw New ArgumentException("La consulta no puede estar vacía")
+        End If
+        Dim dt As New DataTable()
+
+        Using conn As SqlConnection = GetConnection()
+            Using cmd As New SqlCommand(query, conn)
+
+                If parameters IsNot Nothing Then
+                    For Each p In parameters
+                        cmd.Parameters.AddWithValue(p.Key, p.Value)
+                    Next
+                End If
+
+                Try
+                    Using adapter As New SqlDataAdapter(cmd)
+                        adapter.Fill(dt)
+                    End Using
+                    Return dt
+                Catch ex As Exception
+                    errorMessage = "Error al ejecutar la consulta: " & ex.Message
+                    Return Nothing
+                End Try
+
+            End Using
+        End Using
+        Return Nothing
+
+    End Function
 End Class

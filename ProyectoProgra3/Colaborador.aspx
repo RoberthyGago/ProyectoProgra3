@@ -2,7 +2,7 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
-
+    <asp:HiddenField ID="hfID_TRABAJADOR" runat="server" />
     <div class="form-group">
         <asp:Label ID="LblTipoDoc" runat="server" Text="Tipo Documento" CssClass="control-label"></asp:Label>
         <asp:DropDownList ID="DdlTipoDocumento" runat="server" CssClass="form-control">
@@ -57,35 +57,49 @@
 
     <div class="form-group">
         <asp:Label ID="LblCorreo" runat="server" Text="Correo" CssClass="control-label"></asp:Label>
-        <asp:TextBox ID="TxtCorreo" runat="server"  placeholder="correo@abc.com" CssClass="form-control" TextMode="Email"></asp:TextBox>
+        <asp:TextBox ID="TxtCorreo" runat="server" autocomplete="email" placeholder="nombre@empresa.com" CssClass="form-control" TextMode="Email"></asp:TextBox>
     </div>
     <asp:RequiredFieldValidator ID="rfvCorreo" runat="server"
         ErrorMessage="Es necesario indicar el correo"
         ControlToValidate="TxtCorreo" Display="Dynamic"></asp:RequiredFieldValidator>
 
 
-    <asp:Button ID="BtnGuardar" runat="server" Text="Guardar" CssClass="btn btn-primary my-2" OnClick="BtnGuardar_Click" />
+
+    <div class="py-3 d-flex gap-2">
+        <asp:Button ID="btnGuardar" runat="server" Text="Guardar" CssClass="btn btn-primary" OnClick="btnGuardar_Click" />
+        <asp:Button ID="btnCancelar" runat="server" Text="Cancelar" CssClass="btn btn-secondary" OnClick="btnCancelar_Click" Visible="false" />
+        <asp:Button ID="btnActualizar" runat="server" Text="Actualizar" CssClass="btn btn-warning" OnClick="btnActualizar_Click" visible="false" />
+    </div>
+
     <asp:Label ID="lblResultado" runat="server" Text="" CssClass="control-label"></asp:Label>
 
-    <%--creo eventos nuevos gridview--%>
-    <asp:GridView ID="gvColaborador" CssClass="table table-striped table-hover"  
-        runat="server" AutoGenerateColumns="False" DataKeyNames="ID_TRABAJADOR" DataSourceID="ProyectoProgra3">
-        <Columns>
-            <asp:BoundField DataField="ID_TRABAJADOR" HeaderText="ID_TRABAJADOR" InsertVisible="False" ReadOnly="True" SortExpression="ID_TRABAJADOR" />
-            <asp:BoundField DataField="NOMBRE" HeaderText="NOMBRE" SortExpression="NOMBRE" />
-            <asp:BoundField DataField="APELLIDOS" HeaderText="APELLIDOS" SortExpression="APELLIDOS" />
-            <asp:BoundField DataField="IDENTIFICACION" HeaderText="IDENTIFICACION" SortExpression="IDENTIFICACION" />
-            <asp:BoundField DataField="FECHA_NACIMIENTO" HeaderText="FECHA_NACIMIENTO" SortExpression="FECHA_NACIMIENTO" />
-            <asp:CommandField ShowDeleteButton="true" ControlStyle-CssClass="btn btn-danger"  DeleteText="<i class='bi bi-trash'>"/> 
-            </Columns>
-</asp:GridView>
-        
 
-<asp:SqlDataSource ID="ProyectoProgra3" runat="server" 
-        ConnectionString="<%$ ConnectionStrings:ROBERTHCAConnectionString %>" 
-        ProviderName="System.Data.SqlClient" 
-        SelectCommand="SELECT * FROM [COLABORADOR]">
-    </asp:SqlDataSource>
+
+    <%--creo eventos nuevos gridview--%>
+    <asp:GridView ID="gvColaborador" CssClass="table table-striped table-hover"
+        runat="server" AutoGenerateColumns="False" DataKeyNames="ID_TRABAJADOR" DataSourceID="ProyectoProgra3"
+        OnRowEditing="gvColaborador_RowEditing"
+        OnSelectedIndexChanged="gvColaborador_SelectedIndexChanged"
+        OnRowDeleting="gvColaborador_RowDeleting">
+        <Columns>
+            <asp:BoundField DataField="ID_TRABAJADOR" HeaderText="Id Trabajador"  ControlStyle-CssClass="d-none" InsertVisible="False" visible="False" ReadOnly="True" SortExpression="ID_TRABAJADOR" />
+            <asp:BoundField ControlStyle-CssClass="d-none" DataField="TipoDocumento" HeaderText="Tipo Documento" SortExpression="TipoDocumento" />
+            <asp:BoundField DataField="NOMBRE" HeaderText="Nombre" SortExpression="NOMBRE" />
+            <asp:BoundField DataField="APELLIDOS" HeaderText="Apellidos" SortExpression="APELLIDOS" />
+            <asp:BoundField DataField="IDENTIFICACION" HeaderText="Identificación" SortExpression="IDENTIFICACION" />
+            <asp:BoundField DataField="FECHA_NACIMIENTO" HeaderText="Fecha Nacimiento" SortExpression="FECHA_NACIMIENTO" />
+            <asp:BoundField DataField="Correo" HeaderText="Correo" SortExpression="Correo" />
+            <%--<asp:CommandField ShowEditButton="true" ControlStyle-CssClass="btn btn-primary"  EditText="<i class='bi bi-pencil'>"/>--%>
+            <asp:CommandField ShowSelectButton="true" ControlStyle-CssClass="btn btn-primary" SelectText="<i class='bi bi-pencil'>" />
+            <asp:CommandField ShowDeleteButton="true" ControlStyle-CssClass="btn btn-danger" DeleteText="<i class='bi bi-trash'>" />
+        </Columns>
+    </asp:GridView>
+
+
+    <asp:SqlDataSource ID="ProyectoProgra3" runat="server"
+        ConnectionString="<%$ ConnectionStrings:ROBERTHCAConnectionString %>"
+        ProviderName="System.Data.SqlClient"
+        SelectCommand="SELECT * FROM [COLABORADOR]"></asp:SqlDataSource>
 
 
 </asp:Content>
