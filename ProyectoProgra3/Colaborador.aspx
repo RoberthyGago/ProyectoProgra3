@@ -71,7 +71,7 @@
         <asp:Button ID="btnActualizar" runat="server" Text="Actualizar" CssClass="btn btn-warning" OnClick="btnActualizar_Click" visible="false" />
     </div>
 
-    <asp:Label ID="lblResultado" runat="server" Text="" CssClass="control-label"></asp:Label>
+   
 
 
 

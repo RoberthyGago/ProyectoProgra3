@@ -202,6 +202,10 @@
     <Content Include="Scripts\WebForms\WebForms.js" />
     <Content Include="Scripts\WebForms\WebParts.js" />
     <Content Include="Scripts\WebForms\WebUIValidation.js" />
+    <Content Include="Ul\Login.aspx" />
+    <Content Include="Ul\Planillas.aspx" />
+    <Content Include="Ul\Registro.aspx" />
+    <Content Include="Ul\Usuario.aspx" />
     <Content Include="Web.config" />
     <Content Include="Bundle.config" />
   </ItemGroup>
@@ -230,6 +234,7 @@
       <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="DataBase\ColaboradorDB.vb" />
+    <Compile Include="DataBase\UsuarioDB.vb" />
     <Compile Include="Default.aspx.vb">
       <SubType>ASPXCodeBehind</SubType>
       <DependentUpon>Default.aspx</DependentUpon>
@@ -242,6 +247,9 @@
     </Compile>
     <Compile Include="Models\Colaborador.vb" />
     <Compile Include="Models\ModelErrorMessage.vb" />
+    <Compile Include="Models\Persona.vb" />
+    <Compile Include="Models\Planillas.vb" />
+    <Compile Include="Models\Usuario.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -261,6 +269,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="Simple3Des.vb" />
     <Compile Include="Site.Master.designer.vb">
       <DependentUpon>Site.Master</DependentUpon>
     </Compile>
@@ -268,7 +277,37 @@
       <DependentUpon>Site.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="Ul\Login.aspx.designer.vb">
+      <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Ul\Login.aspx.vb">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="Ul\PersonaDB.vb" />
+    <Compile Include="Ul\Planillas.aspx.designer.vb">
+      <DependentUpon>Planillas.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Ul\Planillas.aspx.vb">
+      <DependentUpon>Planillas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Ul\Registro.aspx.designer.vb">
+      <DependentUpon>Registro.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Ul\Registro.aspx.vb">
+      <DependentUpon>Registro.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Ul\Usuario.aspx.designer.vb">
+      <DependentUpon>Usuario.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Ul\Usuario.aspx.vb">
+      <DependentUpon>Usuario.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
     <Compile Include="Utils\DbHealper.vb" />
+    <Compile Include="Utils\ErrorLogger.vb" />
     <Compile Include="Utils\SwalUtils.vb" />
     <Compile Include="ViewSwitcher.ascx.vb">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
@@ -324,10 +363,10 @@
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
   </PropertyGroup>
   <PropertyGroup>
-    <OptionExplicit>On</OptionExplicit>
+    <OptionExplicit>Off</OptionExplicit>
   </PropertyGroup>
   <PropertyGroup>
-    <OptionCompare>Binary</OptionCompare>
+    <OptionCompare>Text</OptionCompare>
   </PropertyGroup>
   <PropertyGroup>
     <OptionStrict>Off</OptionStrict>
