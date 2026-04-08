@@ -36,7 +36,7 @@
             <div class="card shadow-lg border-0 rounded-4 w-100" style="max-width: 500px;">
 
                 <div class="card-header text-center text-white rounded-top-4 border-0 py-4"
-                    style="background: linear-gradient(135deg, #1ECECB, #159f9c);">
+                    style="background-color : #212529;">
                     <h2 class="mb-1 fw-bold">Registro de Usuario</h2>
                     <p class="mb-0 small">Complete la información para crear la cuenta</p>
                 </div>
@@ -83,14 +83,14 @@
                         <div class="d-grid mt-4">
                                 <asp:Button ID="btnRegistrar" runat="server" Text="Registrarse" OnClick="btnRegistrar_Click"
                                 CssClass="btn btn-lg text-white fw-bold rounded-3"
-                                Style="background-color: #E76862;" />
+                                Style="background-color: #068a8a;" />
                         </div>
                     </div>
                 </div>
 
                 <div class="card-footer bg-white text-center border-0 pb-4">
                     <span class="text-muted">¿Ya tiene cuenta?</span>
-                    <a href="Login.aspx" class="text-decoration-none fw-bold ms-1" style="color: #1ECECB;">Iniciar sesión</a>
+                    <a href="Login.aspx" class="text-decoration-none fw-bold ms-1" style="color: #212529;">Iniciar sesión</a>
                 </div>
             </div>
         </div>
