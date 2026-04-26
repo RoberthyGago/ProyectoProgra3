@@ -87,7 +87,7 @@ Public Class DbHealper
         Return Nothing
     End Function
 
-    'Función para ejecutar una consulta que devuelve un solo valor (por ejemplo, COUNT, SUM, etc.)
+    'Función para ejecutar una consulta que devuelve un solo valor 
     Public Function ExecuteScalar(query As String, parameters As Dictionary(Of String, Object), ByRef errorMessage As String) As Object
         If String.IsNullOrWhiteSpace(query) Then
             Throw New ArgumentException("La consulta no puede estar vacía")

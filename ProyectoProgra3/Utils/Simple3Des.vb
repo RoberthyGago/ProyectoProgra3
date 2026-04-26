@@ -1,9 +1,8 @@
 ﻿Imports System.Security.Cryptography
 
-''' <summary>
+
 ''' Clase para encriptar y desencriptar datos utilizando Triple DES (3DES).
-''' https://learn.microsoft.com/es-es/dotnet/api/system.security.cryptography.tripledescryptoserviceprovider?view=net-9.0
-''' </summary>
+
 
 Public NotInheritable Class Simple3Des
     Private ReadOnly TripleDes As New TripleDESCryptoServiceProvider

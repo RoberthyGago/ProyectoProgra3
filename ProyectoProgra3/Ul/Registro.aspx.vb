@@ -10,7 +10,7 @@ Public Class Registro
 
     End Sub
 
-    Protected Sub btnRegistrar_Click(sender As Object, e As EventArgs)
+    Protected Sub btnRegistrar_Click(sender As Object, e As EventArgs) Handles btnRegistrar.Click
         Dim persona As New Persona()
         Dim usuario As New Usuarios()
 

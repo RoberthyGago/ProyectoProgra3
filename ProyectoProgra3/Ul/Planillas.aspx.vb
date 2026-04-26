@@ -17,7 +17,7 @@ Public Class Planillas
         Try
             Using cn As New SqlConnection(cadena)
                 cn.Open()
-                ' Usa los nombres reales de las columnas
+                ' para jalar los colaboradores y mostrarlos en el dropdownlist
                 Dim cmd As New SqlCommand("SELECT ID_TRABAJADOR, (NOMBRE + ' ' + APELLIDOS) AS NombreCompleto FROM COLABORADOR", cn)
                 Dim da As New SqlDataAdapter(cmd)
                 Dim dt As New DataTable()
@@ -89,7 +89,7 @@ Public Class Planillas
         vTotalDeducciones = vCCSS + vRenta
         vNeto = vBruto - vTotalDeducciones
 
-        ' Crear tabla para mostrar en GridView
+        'tabla para mostrar en GridView
         Dim dt As New DataTable()
         dt.Columns.Add("Concepto")
         dt.Columns.Add("Monto")
