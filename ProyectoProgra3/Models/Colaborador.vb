@@ -11,7 +11,7 @@ Namespace Models
         Private _fechaNacimiento As Date
         Private _correo As String
         Private _ID_TRABAJADOR As Integer
-
+        Private _ID_DEPARTAMENTO As Integer
         Public Sub New()
             Me.Nombre = "sin nombre"
         End Sub
@@ -93,6 +93,15 @@ Namespace Models
             End Get
             Set(value As String)
                 _correo = value
+            End Set
+        End Property
+
+        Public Property ID_DEPARTAMENTO As Integer
+            Get
+                Return _ID_DEPARTAMENTO
+            End Get
+            Set(value As Integer)
+                _ID_DEPARTAMENTO = value
             End Set
         End Property
 

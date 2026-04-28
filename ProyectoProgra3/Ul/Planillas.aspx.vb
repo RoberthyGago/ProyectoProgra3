@@ -17,8 +17,15 @@ Public Class Planillas
         Try
             Using cn As New SqlConnection(cadena)
                 cn.Open()
-                ' para jalar los colaboradores y mostrarlos en el dropdownlist
-                Dim cmd As New SqlCommand("SELECT ID_TRABAJADOR, (NOMBRE + ' ' + APELLIDOS) AS NombreCompleto FROM COLABORADOR", cn)
+
+                Dim cmd As New SqlCommand("
+                SELECT 
+                    c.ID_TRABAJADOR, 
+                    (c.NOMBRE + ' ' + c.APELLIDOS + ' - ' + d.NOMBRE_DEPARTAMENTO) AS NombreCompleto
+                FROM COLABORADOR c
+                INNER JOIN DEPARTAMENTO d 
+                    ON c.ID_DEPARTAMENTO = d.ID_DEPARTAMENTO", cn)
+
                 Dim da As New SqlDataAdapter(cmd)
                 Dim dt As New DataTable()
                 da.Fill(dt)
@@ -30,12 +37,14 @@ Public Class Planillas
             End Using
 
             ddlColaboradores.Items.Insert(0, New ListItem("-- Seleccione colaborador --", "0"))
+
         Catch ex As Exception
             ClientScript.RegisterStartupScript(Me.GetType(), "alert", "alert('Error al cargar colaboradores: " & ex.Message & "');", True)
         End Try
     End Sub
 
     Protected Sub BtnProcesarPlanilla_Click(sender As Object, e As EventArgs)
+
         Dim vSalarioBase As Double = 0
         Dim vExtras As Double = 0
         Dim vBruto As Double = 0
@@ -50,18 +59,30 @@ Public Class Planillas
             Exit Sub
         End If
 
-        ' Salario base por categoría
-        Select Case Cmbcategoria.SelectedValue
-            Case "0"
-                vSalarioBase = 350000
-            Case "1"
-                vSalarioBase = 375000
-            Case "2"
-                vSalarioBase = 550000
-            Case Else
-                ClientScript.RegisterStartupScript(Me.GetType(), "alert", "alert('Debe seleccionar una categoría.');", True)
+        ' 🔹 Obtener salario base desde la BD
+        Dim cadena As String = ConfigurationManager.ConnectionStrings("ROBERTHCAConnectionString").ConnectionString
+
+        Using cn As New SqlConnection(cadena)
+            cn.Open()
+
+            Dim cmd As New SqlCommand("
+            SELECT d.SALARIO_BASE
+            FROM COLABORADOR c
+            INNER JOIN DEPARTAMENTO d 
+                ON c.ID_DEPARTAMENTO = d.ID_DEPARTAMENTO
+            WHERE c.ID_TRABAJADOR = @id", cn)
+
+            cmd.Parameters.AddWithValue("@id", ddlColaboradores.SelectedValue)
+
+            Dim result = cmd.ExecuteScalar()
+
+            If result IsNot Nothing AndAlso Not IsDBNull(result) Then
+                vSalarioBase = Convert.ToDouble(result)
+            Else
+                ClientScript.RegisterStartupScript(Me.GetType(), "alert", "alert('No se encontró salario para el colaborador');", True)
                 Exit Sub
-        End Select
+            End If
+        End Using
 
         ' Horas extras
         If IsNumeric(TxthorasExtras.Text) AndAlso Val(TxthorasExtras.Text) >= 0 Then
@@ -89,7 +110,7 @@ Public Class Planillas
         vTotalDeducciones = vCCSS + vRenta
         vNeto = vBruto - vTotalDeducciones
 
-        'tabla para mostrar en GridView
+        ' Tabla para GridView
         Dim dt As New DataTable()
         dt.Columns.Add("Concepto")
         dt.Columns.Add("Monto")
@@ -106,10 +127,11 @@ Public Class Planillas
         gvDeducciones.DataSource = dt
         gvDeducciones.DataBind()
 
-        ' Mostrar resultados en TextBox
+        ' Resultados
         Txtsalario_bruto.Text = Format(vBruto, "#,##0.00")
         Txtdeducciones.Text = Format(vTotalDeducciones, "#,##0.00")
         Txtsalario_neto.Text = Format(vNeto, "#,##0.00")
         TxtPrueba.Text = Format(vExtras, "#,##0.00")
+
     End Sub
 End Class

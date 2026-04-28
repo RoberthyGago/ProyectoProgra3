@@ -25,7 +25,7 @@ Public Class Colaborador
         colaborador.Correo = TxtCorreo.Text.Trim()
         colaborador.TipoDocumento = DdlTipoDocumento.SelectedItem.Value
         colaborador.Identificacion = TxtIdentificacion.Text.Trim()
-
+        colaborador.ID_DEPARTAMENTO = ddlDepartamento.SelectedValue
         Dim errorMessage As String = ""
         'l'blResultado.Text = colaborador.Resumen
         'Dim resultado As Boolean
@@ -99,7 +99,7 @@ Public Class Colaborador
         colaborador.Correo = TxtCorreo.Text.Trim()
         colaborador.TipoDocumento = DdlTipoDocumento.SelectedItem.Value
         colaborador.Identificacion = TxtIdentificacion.Text.Trim()
-
+        colaborador.ID_Departamento = ddlDepartamento.SelectedValue
         'lblResultado.Text = colaborador.Resumen()
         Dim errorMessage As String = ""
         Dim resultado = db.ActualizarCOLABORADOR(colaborador, errorMessage)

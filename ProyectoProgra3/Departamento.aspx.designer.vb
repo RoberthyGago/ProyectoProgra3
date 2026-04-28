@@ -11,95 +11,77 @@ Option Strict On
 Option Explicit On
 
 
-Partial Public Class Planillas
+Partial Public Class DEPARTAMENTO
 
     '''<summary>
-    '''Control LblColaborador.
+    '''Control LblNombre_Departamento.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents LblColaborador As Global.System.Web.UI.WebControls.Label
+    Protected WithEvents LblNombre_Departamento As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
-    '''Control ddlColaboradores.
+    '''Control TxtNombre_Departamento.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents ddlColaboradores As Global.System.Web.UI.WebControls.DropDownList
+    Protected WithEvents TxtNombre_Departamento As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
-    '''Control LblHoras.
+    '''Control rfvNombre_Departamento.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents LblHoras As Global.System.Web.UI.WebControls.Label
+    Protected WithEvents rfvNombre_Departamento As Global.System.Web.UI.WebControls.RequiredFieldValidator
 
     '''<summary>
-    '''Control TxthorasExtras.
+    '''Control LblSalario.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents TxthorasExtras As Global.System.Web.UI.WebControls.TextBox
+    Protected WithEvents LblSalario As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
-    '''Control BtnProcesarPlanilla.
+    '''Control TxtSalario.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents BtnProcesarPlanilla As Global.System.Web.UI.WebControls.Button
+    Protected WithEvents TxtSalario As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
-    '''Control gvDeducciones.
+    '''Control BtnGuardar.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents gvDeducciones As Global.System.Web.UI.WebControls.GridView
+    Protected WithEvents BtnGuardar As Global.System.Web.UI.WebControls.Button
 
     '''<summary>
-    '''Control Txtsalario_bruto.
+    '''Control GridView1.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents Txtsalario_bruto As Global.System.Web.UI.WebControls.TextBox
+    Protected WithEvents GridView1 As Global.System.Web.UI.WebControls.GridView
 
     '''<summary>
-    '''Control Txtdeducciones.
+    '''Control ProyectoProgra3.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents Txtdeducciones As Global.System.Web.UI.WebControls.TextBox
-
-    '''<summary>
-    '''Control Txtsalario_neto.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents Txtsalario_neto As Global.System.Web.UI.WebControls.TextBox
-
-    '''<summary>
-    '''Control TxtPrueba.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents TxtPrueba As Global.System.Web.UI.WebControls.TextBox
+    Protected WithEvents ProyectoProgra3 As Global.System.Web.UI.WebControls.SqlDataSource
 End Class

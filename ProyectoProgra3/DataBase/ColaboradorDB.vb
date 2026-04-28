@@ -9,8 +9,8 @@ Public Class ColaboradorDB
     Public Function CrearColaborador(ByVal pColaborador As Models.Colaborador, ByRef errorMessage As String) As Boolean
         'logica para insertar un nuevo colaborador en la base de datos
         Using db.GetConnection()
-            Dim query As String = "INSERT INTO COLABORADOR (TipoDocumento, Identificacion, Nombre, Apellidos, Fecha_Nacimiento, Correo) 
-            VALUES (@TipoDocumento, @Identificacion, @Nombre, @Apellidos, @FechaNacimiento, @Correo)"
+            Dim query As String = "INSERT INTO COLABORADOR (TipoDocumento, Identificacion, Nombre, Apellidos, Fecha_Nacimiento,id_departamento, Correo) 
+            VALUES (@TipoDocumento, @Identificacion, @Nombre, @Apellidos, @FechaNacimiento, @id_departamento, @Correo)"
 
             Dim parameters As New Dictionary(Of String, Object) From {
             {"@Nombre", pColaborador.Nombre},
@@ -18,7 +18,8 @@ Public Class ColaboradorDB
             {"@Correo", pColaborador.Correo},
             {"@Apellidos", pColaborador.Apellidos},
             {"@Identificacion", pColaborador.Identificacion},
-            {"@TipoDocumento", pColaborador.TipoDocumento}
+            {"@TipoDocumento", pColaborador.TipoDocumento},
+            {"@id_departamento", pColaborador.ID_DEPARTAMENTO}
           }
 
             Return db.ExecuteNonQuery(query, parameters, errorMessage)
@@ -45,6 +46,7 @@ Public Class ColaboradorDB
                               Nombre = @Nombre, 
                               Apellidos = @Apellidos, 
                               Fecha_Nacimiento = @FechaNacimiento,
+                              id_departamento = @id_departamento,
                               Correo = @Correo 
                               WHERE ID_TRABAJADOR = @Id"
         Dim parameters As New Dictionary(Of String, Object) From {
@@ -52,6 +54,7 @@ Public Class ColaboradorDB
             {"@Nombre", pColaborador.Nombre},
             {"@FechaNacimiento", pColaborador.FechaNacimiento},
             {"@Correo", pColaborador.Correo},
+            {"@id_departamento", pColaborador.ID_DEPARTAMENTO},
             {"@Apellidos", pColaborador.Apellidos},
             {"@Identificacion", pColaborador.Identificacion},
             {"@TipoDocumento", pColaborador.TipoDocumento}
@@ -73,7 +76,8 @@ Public Class ColaboradorDB
                 .FechaNacimiento = Convert.ToDateTime(row("FECHA_NACIMIENTO")),
                 .Correo = row("CORREO").ToString(),
                 .Identificacion = row("IDENTIFICACION").ToString(),
-                .TipoDocumento = row("TIPODOCUMENTO").ToString()
+                .TipoDocumento = row("TIPODOCUMENTO").ToString(),
+                .ID_DEPARTAMENTO = Convert.ToInt32(row("ID_DEPARTAMENTO"))
             }
             Return persona
         End If

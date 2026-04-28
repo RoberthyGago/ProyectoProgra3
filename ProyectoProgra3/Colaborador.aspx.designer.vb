@@ -158,6 +158,33 @@ Partial Public Class Colaborador
     Protected WithEvents rfvFechaNacimiento As Global.System.Web.UI.WebControls.RequiredFieldValidator
 
     '''<summary>
+    '''Control LblID_DEPARTAMENTO.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents LblID_DEPARTAMENTO As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''Control ddlDepartamento.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents ddlDepartamento As Global.System.Web.UI.WebControls.DropDownList
+
+    '''<summary>
+    '''Control rfvID_DEPARTAMENTO.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents rfvID_DEPARTAMENTO As Global.System.Web.UI.WebControls.RequiredFieldValidator
+
+    '''<summary>
     '''Control LblCorreo.
     '''</summary>
     '''<remarks>
@@ -228,4 +255,13 @@ Partial Public Class Colaborador
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents ProyectoProgra3 As Global.System.Web.UI.WebControls.SqlDataSource
+
+    '''<summary>
+    '''Control SqlDepartamentos.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents SqlDepartamentos As Global.System.Web.UI.WebControls.SqlDataSource
 End Class

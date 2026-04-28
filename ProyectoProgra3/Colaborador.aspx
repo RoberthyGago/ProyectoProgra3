@@ -54,6 +54,29 @@
         ErrorMessage="Es necesario indicar la fecha de nacimiento"
         ControlToValidate="TxtFechaNacimiento" Display="Dynamic"></asp:RequiredFieldValidator>
 
+    <div class="form-group">
+    <asp:Label ID="LblID_DEPARTAMENTO" runat="server" Text="Departamento" CssClass="control-label"></asp:Label>
+
+    <asp:DropDownList ID="ddlDepartamento" runat="server"
+        CssClass="form-control"
+        DataSourceID="SqlDepartamentos"
+        DataTextField="NOMBRE_DEPARTAMENTO"
+        DataValueField="ID_DEPARTAMENTO"
+        AppendDataBoundItems="True">
+        
+        <asp:ListItem Text="Seleccione un departamento" Value="" />
+    </asp:DropDownList>
+</div>
+
+<asp:RequiredFieldValidator ID="rfvID_DEPARTAMENTO" runat="server"
+    ErrorMessage="Debe seleccionar un departamento"
+    ControlToValidate="ddlDepartamento"
+    InitialValue=""
+    CssClass="text-danger"
+    Display="Dynamic">
+</asp:RequiredFieldValidator>
+
+
 
     <div class="form-group">
         <asp:Label ID="LblCorreo" runat="server" Text="Correo" CssClass="control-label"></asp:Label>
@@ -68,10 +91,10 @@
     <div class="py-3 d-flex gap-2">
         <asp:Button ID="btnGuardar" runat="server" Text="Guardar" CssClass="btn btn-primary" OnClick="btnGuardar_Click" />
         <asp:Button ID="btnCancelar" runat="server" Text="Cancelar" CssClass="btn btn-secondary" OnClick="btnCancelar_Click" Visible="false" />
-        <asp:Button ID="btnActualizar" runat="server" Text="Actualizar" CssClass="btn btn-warning" OnClick="btnActualizar_Click" visible="false" />
+        <asp:Button ID="btnActualizar" runat="server" Text="Actualizar" CssClass="btn btn-warning" OnClick="btnActualizar_Click" Visible="false" />
     </div>
 
-   
+
 
 
 
@@ -82,12 +105,13 @@
         OnSelectedIndexChanged="gvColaborador_SelectedIndexChanged"
         OnRowDeleting="gvColaborador_RowDeleting">
         <Columns>
-            <asp:BoundField DataField="ID_TRABAJADOR" HeaderText="Id Trabajador"  ControlStyle-CssClass="d-none" InsertVisible="False" visible="False" ReadOnly="True" SortExpression="ID_TRABAJADOR" />
+            <asp:BoundField DataField="ID_TRABAJADOR" HeaderText="Id Trabajador" ControlStyle-CssClass="d-none" InsertVisible="False" Visible="False" ReadOnly="True" SortExpression="ID_TRABAJADOR" />
             <asp:BoundField ControlStyle-CssClass="d-none" DataField="TipoDocumento" HeaderText="Tipo Documento" SortExpression="TipoDocumento" />
             <asp:BoundField DataField="NOMBRE" HeaderText="Nombre" SortExpression="NOMBRE" />
             <asp:BoundField DataField="APELLIDOS" HeaderText="Apellidos" SortExpression="APELLIDOS" />
             <asp:BoundField DataField="IDENTIFICACION" HeaderText="Identificación" SortExpression="IDENTIFICACION" />
             <asp:BoundField DataField="FECHA_NACIMIENTO" HeaderText="Fecha Nacimiento" SortExpression="FECHA_NACIMIENTO" />
+            <asp:BoundField DataField="ID_DEPARTAMENTO" HeaderText="Departamento" SortExpression="ID_DEPARTAMENTO" />
             <asp:BoundField DataField="Correo" HeaderText="Correo" SortExpression="Correo" />
             <%--<asp:CommandField ShowEditButton="true" ControlStyle-CssClass="btn btn-primary"  EditText="<i class='bi bi-pencil'>"/>--%>
             <asp:CommandField ShowSelectButton="true" ControlStyle-CssClass="btn btn-primary" SelectText="<i class='bi bi-pencil'>" />
@@ -100,6 +124,10 @@
         ConnectionString="<%$ ConnectionStrings:ROBERTHCAConnectionString %>"
         ProviderName="System.Data.SqlClient"
         SelectCommand="SELECT * FROM [COLABORADOR]"></asp:SqlDataSource>
+
+    <asp:SqlDataSource ID="SqlDepartamentos" runat="server"
+        ConnectionString="<%$ ConnectionStrings:ROBERTHCAConnectionString %>"
+        SelectCommand="SELECT ID_DEPARTAMENTO, NOMBRE_DEPARTAMENTO FROM DEPARTAMENTO"></asp:SqlDataSource>
 
 
 </asp:Content>

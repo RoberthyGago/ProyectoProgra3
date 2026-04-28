@@ -51,7 +51,9 @@
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item"><a class="nav-link" runat="server" href="~/UL/Login.aspx">Inicio</a></li>
                         <li class="nav-item"><a class="nav-link" runat="server" href="~/Colaborador.aspx">Colaboradores</a></li>
+                        <li class="nav-item"><a class="nav-link" runat="server" href="~/Departamento.aspx">Departamentos</a></li>
                         <li class="nav-item"><a class="nav-link" runat="server" href="~/UL/Planillas.aspx">Planillas</a></li>
+
                     </ul>
                 </div>
             </div>

@@ -6,17 +6,11 @@
     <div class="form-group">
         <asp:Label ID="LblColaborador" runat="server" Text="Colaborador" CssClass="control-label"></asp:Label>
         <asp:DropDownList ID="ddlColaboradores" runat="server" CssClass="form-select"
-                          DataTextField="NombreCompleto" DataValueField="ID_TRABAJADOR">
+            DataTextField="NombreCompleto" DataValueField="ID_TRABAJADOR">
         </asp:DropDownList>
     </div>
 
-    <!-- Categoría -->
-    <asp:Label ID="LblCargo" runat="server" Text="Cargo" CssClass="control-label"></asp:Label>
-    <asp:DropDownList ID="Cmbcategoria" runat="server" CssClass="form-select">
-        <asp:ListItem Text="Secretaria" Value="0"></asp:ListItem>
-        <asp:ListItem Text="Ayudante" Value="1"></asp:ListItem>
-        <asp:ListItem Text="Soldador" Value="2"></asp:ListItem>
-    </asp:DropDownList>
+
 
     <!-- Horas extras -->
     <asp:Label ID="LblHoras" runat="server" Text="Horas Extras" CssClass="control-label"></asp:Label>
