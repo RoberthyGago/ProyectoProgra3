@@ -2,6 +2,8 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
+    <h2 class="mb-4">Gestión de Planillas</h2>
+
     <!-- Selección de colaborador desde SQL -->
     <div class="form-group">
         <asp:Label ID="LblColaborador" runat="server" Text="Colaborador" CssClass="control-label"></asp:Label>

@@ -2,6 +2,8 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
+    <h2 class="mb-4">Gestión de Colaboradores</h2>
+
     <asp:HiddenField ID="hfID_TRABAJADOR" runat="server" />
     <div class="form-group">
         <asp:Label ID="LblTipoDoc" runat="server" Text="Tipo Documento" CssClass="control-label"></asp:Label>

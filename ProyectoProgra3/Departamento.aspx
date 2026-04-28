@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="Departamento" Language="vb" AutoEventWireup="false" MasterPageFile="~/Site.Master" CodeBehind="Departamento.aspx.vb" Inherits="ProyectoProgra3.DEPARTAMENTO" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-
+    <h2 class="mb-4">Gestión de Departamentos</h2>
     <div class="form-group">
         <asp:Label ID="LblNombre_Departamento" runat="server" Text="Nombre Departamento" CssClass="control-label"></asp:Label>
         <asp:TextBox ID="TxtNombre_Departamento" runat="server" CssClass="form-control"></asp:TextBox>
